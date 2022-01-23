@@ -2,6 +2,7 @@ import { types } from "../types/types";
 
 const initialState = {
   modalOpen: false,
+  slot:null
 }
 
 export const uiReducer = ( state = initialState, action ) => {
@@ -16,6 +17,11 @@ export const uiReducer = ( state = initialState, action ) => {
       return {
         ...state,
         modalOpen: false,
+      }
+    case types.uiEventAddNewFromSlot:
+      return {
+        ...state,
+        slot: action.payload
       }
 
     default:
