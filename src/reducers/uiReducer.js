@@ -18,11 +18,6 @@ export const uiReducer = ( state = initialState, action ) => {
         ...state,
         modalOpen: false,
       }
-    case types.uiEventAddNewFromSlot:
-      return {
-        ...state,
-        slot: action.payload
-      }
 
     default:
       return state;

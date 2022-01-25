@@ -9,9 +9,9 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment/locale/es'
 import { CalendarEvent } from './CalendarEvent';
 import { CalendarModal } from './CalendarModal';
-import { uiEventAddNewFromSlot, uiOpenModal } from "../../actions/ui";
+import { uiOpenModal } from "../../actions/ui";
 import { useDispatch, useSelector } from 'react-redux';
-import { eventClearActiveEvent, eventSetActive } from '../../actions/events';
+import { eventClearActiveEvent, eventSetActive, eventAddNewFromSlot } from '../../actions/events';
 import { AddNewFab } from '../ui/AddNewFab';
 import { DeleteEventFab } from '../ui/DeleteEventFab';
 
@@ -65,12 +65,13 @@ export const CalendarScreen = () => {
     }
   };
 
-  const onSelectSlot = (e) => {
+  //TODO:
+  const onSelectSlot = (event) => {
     dispatch( eventClearActiveEvent() )
+    const { action, slots } = event;
 
-    const { action, slots } = e;
-    if ( action === 'doubleClick') {
-      dispatch( uiEventAddNewFromSlot(slots[0]) );
+    if ( action === 'doubleClick' && slots ) {
+      dispatch( eventAddNewFromSlot(slots[0]) );
       dispatch( uiOpenModal() );
     }
   }

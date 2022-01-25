@@ -15,7 +15,8 @@ const initialState = {
     }
   }
   ],
-  activeEvent: null
+  activeEvent: null,
+  slot: null,
 };
 
 export const calendarReducer = (state = initialState, action) =>{
@@ -34,10 +35,17 @@ export const calendarReducer = (state = initialState, action) =>{
         events:[ ...state.events, action.payload ]
       }
 
+    case types.eventAddNewFromSlot:
+      return {
+        ...state,
+        slot: action.payload
+      }
+
     case types.eventClearActiveEvent:
       return {
         ...state,
-        activeEvent: null
+        activeEvent: null,
+        slot: null
       }
 
     case types.eventUpdated:

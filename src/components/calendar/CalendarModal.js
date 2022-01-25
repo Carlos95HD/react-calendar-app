@@ -33,8 +33,8 @@ const initEvent = {
 export const CalendarModal = () => {
 
   const dispatch = useDispatch();
-  const { modalOpen, slot } = useSelector( state => state.ui )
-  const { activeEvent } = useSelector( state => state.calendar )
+  const { modalOpen } = useSelector( state => state.ui );
+  const { activeEvent, slot } = useSelector( state => state.calendar );
 
   // const [dateStart, setDateStart] = useState(now.toDate());
   // const [dateEnd, setDateEnd] = useState(nowPlus1.toDate());
@@ -52,11 +52,11 @@ export const CalendarModal = () => {
     }
   }, [activeEvent, setFormValues]);
 
+  //Create Event from onSelectSlot
   useEffect(() => {
-
     if ( slot ) {
       setFormValues({
-        ...formValues,
+        ...initEvent,
         start: slot,
         end: moment(slot).add(1, "hours").toDate()
       });

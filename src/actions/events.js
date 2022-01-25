@@ -5,6 +5,11 @@ export const eventAddNew = (event) => ({
   payload:event
 });
 
+export const eventAddNewFromSlot = (slot) => ({
+  type:types.eventAddNewFromSlot,
+  payload : slot
+});
+
 export const eventSetActive = (event) => ({
   type:types.eventSetActive,
   payload: event
