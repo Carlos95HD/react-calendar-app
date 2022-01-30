@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { refreshToken, startChecking } from '../actions/auth';
 import { LoginScreen } from '../components/auth/LoginScreen';
 import { CalendarScreen } from '../components/calendar/CalendarScreen';
+import { LoadingScreen } from '../components/loading/LoadingScreen';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 
@@ -25,7 +26,7 @@ export const AppRouter = () => {
   }, [dispatch]);
 
   if (checking) {
-    return (<h5>Espere...</h5>);
+    return (<LoadingScreen />);
   }
 
   return (
