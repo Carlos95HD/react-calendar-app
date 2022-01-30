@@ -65,7 +65,6 @@ export const CalendarScreen = () => {
     }
   };
 
-  //TODO:
   const onSelectSlot = (event) => {
     dispatch( eventClearActiveEvent() )
     const { action, slots } = event;
