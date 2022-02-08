@@ -19,7 +19,10 @@ const customStyles = {
   },
 };
 
-Modal.setAppElement("#root");
+if (process.env.NODE_ENV !== "test") {
+  Modal.setAppElement("#root");
+}
+
 const now = moment().minutes(0).seconds(0).add(1, "hours");
 const nowPlus1 = now.clone().add(1, "hours");
 
@@ -111,7 +114,6 @@ export const CalendarModal = () => {
       return setTitleValid(false);
     }
 
-    //TODO: realizar grabación en base de datos
     if ( activeEvent ) {
       dispatch( eventStartUpdate( formValues ) )
     } else {
@@ -129,6 +131,7 @@ export const CalendarModal = () => {
       onRequestClose={closeModal}
       closeTimeoutMS={200}
       className="modal"
+      ariaHideApp={ !process.env.NODE_ENV === 'test' }
       overlayClassName="modal-fondo"
       style={customStyles}
       contentLabel="Example Modal"
